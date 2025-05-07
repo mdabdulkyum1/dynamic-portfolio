@@ -7,7 +7,9 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "motion/react";
-
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useRef, useState } from "react";
 
 
@@ -91,7 +93,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         boxShadow: visible
           ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
           : "none",
-        width: visible ? "40%" : "100%",
+        width: visible ? "60%" : "100%",
         y: visible ? 20 : 0,
       }}
       transition={{
@@ -112,9 +114,9 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
     </motion.div>
   );
 };
-
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
+  const pathname = usePathname();
 
   return (
     <motion.div
@@ -124,26 +126,34 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
         className,
       )}
     >
-      {items.map((item, idx) => (
-        <a
-          onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
-          className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
-          key={`link-${idx}`}
-          href={item.link}
-        >
-          {hovered === idx && (
-            <motion.div
-              layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
-            />
-          )}
-          <span className="relative z-20">{item.name}</span>
-        </a>
-      ))}
+      {items.map((item, idx) => {
+        const isActive = pathname === item.link;
+
+        return (
+          <Link
+            onMouseEnter={() => setHovered(idx)}
+            onClick={onItemClick}
+            className={cn(
+              "relative px-4 py-2 text-neutral-600 dark:text-neutral-300",
+              isActive && "text-blue-600 font-semibold dark:text-blue-400" 
+            )}
+            key={`link-${idx}`}
+            href={item.link}
+          >
+            {hovered === idx && (
+              <motion.div
+                layoutId="hovered"
+                className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+              />
+            )}
+            <span className="relative z-20">{item.name}</span>
+          </Link>
+        );
+      })}
     </motion.div>
   );
 };
+
 
 export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   return (
@@ -232,18 +242,20 @@ export const MobileNavToggle = ({
 
 export const NavbarLogo = () => {
   return (
-    <a
-      href="#"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
-    >
-      <img
-        src="https://assets.aceternity.com/logo-dark.png"
-        alt="logo"
-        width={30}
-        height={30}
-      />
-      <span className="font-medium text-black dark:text-white">Startup</span>
-    </a>
+    <Link
+    href="/"
+    className="relative z-20 mr-4 flex items-center justify-center space-x-2 px-2 py-1 text-sm font-normal text-black"
+  >
+    <Image
+      src="/logo.png"
+      alt="logo"
+      className="mb-1"
+      width={40}
+      height={40}
+    />
+    <span className="font-medium text-black dark:text-white md:text-2xl mt-1 inline-block">Abdul Kyum</span>
+  </Link>
+  
   );
 };
 
