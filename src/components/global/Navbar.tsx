@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/resizable-navbar";
 import useScrollDirection from "@/hooks/ScrollDirection/useScrollDirection";
 import { useState } from "react";
+import Button from "./Buttons/Button";
 
 export function NavbarDemo() {
   const navItems = [
@@ -54,7 +55,7 @@ export function NavbarDemo() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-4">
-            <NavbarButton variant="primary">Hire</NavbarButton>
+            <Button text={"Hire"}></Button>
           </div>
         </NavBody>
 
