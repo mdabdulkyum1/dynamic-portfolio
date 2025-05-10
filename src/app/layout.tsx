@@ -1,9 +1,9 @@
-import Footer from '@/components/global/Footer';
 import { NavbarDemo } from "@/components/global/Navbar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NextAuthProvider from '@/Providers/NextAuthProvider';
+import Footer from '@/components/global/Footer';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

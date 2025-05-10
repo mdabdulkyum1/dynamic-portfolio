@@ -1,7 +1,27 @@
+"use client";
+
+
 import { Github, Linkedin, Twitter, Facebook } from "lucide-react";
 import LoginWithGitHub from './LoginWithGitHub';
 
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Button from "./Buttons/Button";
+
 const Footer = () => {
+  const [showSignOut, setShowSignOut] = useState(false);
+
+  const { data: session } = useSession();
+  
+  const router = useRouter();
+
+  const handelSignOut = async () => {
+      await signOut({ redirect: false});
+      router.push("/");
+  }
+
   return (
     <footer className="bg-t-blue py-10 border-t border-slate-700">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
@@ -33,7 +53,30 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <LoginWithGitHub />
+              {session ? 
+              
+              ( <div className="relative">
+                <Image
+                  src={session.user?.image || ""}
+                  width={32}
+                  height={32}
+                  alt="User"
+                  onClick={() => setShowSignOut(!showSignOut)}
+                  className="w-8 h-8 rounded-full cursor-pointer border border-slate-500"
+                />
+          
+                {showSignOut && (
+                  <div onClick={() => handelSignOut()} className="relative">
+                    <div className="absolute w-3xs">
+                     <Button text={"Sign Out"}></Button>
+                     </div>
+                  </div>
+                )}
+              </div>) 
+              
+              : 
+              
+              <LoginWithGitHub />}
             </li>
           </ul>
 
