@@ -1,28 +1,9 @@
-import type { NextAuthOptions, User, Session, Account } from "next-auth";
-import type { JWT } from "next-auth/jwt";
+import type { ExtendedSession, ExtendedToken, ExtendedUser } from "@/types/next-auth";
+
+import type { Account, NextAuthOptions, Session } from "next-auth";
 import GitHubProvider from "next-auth/providers/github";
-import connectDB from "./db";
 import Users from "../../models/Users";
-
-interface ExtendedUser extends User {
-  _id?: string;
-  role?: string;
-}
-
-interface ExtendedToken extends JWT {
-  role?: string;
-  id?: string;
-}
-
-interface ExtendedSession extends Session {
-  user: {
-    name?: string | null;
-    email?: string | null;
-    image?: string | null;
-    _id?: string;
-    role?: string;
-  };
-}
+import connectDB from "./db";
 
 export const authOptions: NextAuthOptions = {
   providers: [

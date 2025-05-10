@@ -1,6 +1,6 @@
 "use client";
 
-
+import type { ExtendedSession} from "@/types/next-auth";
 import { Github, Linkedin, Twitter, Facebook } from "lucide-react";
 import LoginWithGitHub from './LoginWithGitHub';
 
@@ -9,19 +9,20 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Button from "./Buttons/Button";
+import Link from "next/link";
 
 const Footer = () => {
   const [showSignOut, setShowSignOut] = useState(false);
 
-  const { data: session } = useSession();
-  
+  const { data: sessionData } = useSession();
+  const session = sessionData as ExtendedSession | null; 
+
   const router = useRouter();
 
   const handelSignOut = async () => {
-      await signOut({ redirect: false});
-      router.push("/");
-  }
-
+    await signOut({ redirect: false });
+    router.push("/");
+  };
   return (
     <footer className="bg-t-blue py-10 border-t border-slate-700">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
@@ -37,6 +38,15 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <ul className="flex flex-wrap justify-center items-center md:justify-start gap-6">
+            {
+              session?.user?.role === "admin" && (
+            <li>
+              <Link href="/dashboard" className="text-slate-gray hover:text-t-flax transition">
+                  My Dashboard
+              </Link>
+            </li>
+              )
+            }
             <li>
               <a href="#about" className="text-slate-gray hover:text-t-flax transition">
                 About
