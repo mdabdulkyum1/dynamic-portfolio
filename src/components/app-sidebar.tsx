@@ -33,13 +33,15 @@ import {
 } from "@/components/ui/sidebar"
 import Link from "next/link"
 import Image from "next/image"
+import { useSession } from "next-auth/react"
+import type { ExtendedSession} from "@/types/next-auth";
+
+
+
+
 
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
+ 
   navMain: [
     {
       title: "Dashboard",
@@ -152,6 +154,24 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+
+   const { data: sessionData } = useSession();
+   const session = sessionData as ExtendedSession | null;
+   
+   const userInfo = session?.user;
+
+    const userName = userInfo?.name || "Guest";
+    const userEmail = userInfo?.email ?? "no-email@example.com";
+    const userAvatar = userInfo?.image ?? "/avatars/default.jpg";
+    
+
+    const user =  {
+        name: userName,
+        email: userEmail,
+        avatar: userAvatar,
+    } 
+  
+
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -175,7 +195,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
     </Sidebar>
   )

@@ -20,3 +20,4 @@ export interface ExtendedSession extends Session {
     role?: string;
   };
 }
+
