@@ -26,6 +26,8 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { useRouter } from "next/navigation"
+import { signOut } from "next-auth/react"
 
 export function NavUser({
   user,
@@ -37,6 +39,13 @@ export function NavUser({
   }
 }) {
   const { isMobile } = useSidebar()
+
+  const router = useRouter();
+
+  const handelSignOut = async () => {
+      await signOut({ redirect: false });
+      router.push("/");
+    };
 
   return (
     <SidebarMenu>
@@ -85,8 +94,10 @@ export function NavUser({
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <LogOut />
-              Log out
+               <button onClick={()=> handelSignOut()} className="flex items-center gap-2 cursor-pointer">
+                 <LogOut />
+                 Log out
+              </button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
