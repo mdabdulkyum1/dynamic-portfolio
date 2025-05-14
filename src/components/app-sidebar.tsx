@@ -54,17 +54,17 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: LayoutDashboard,
       isActive: true,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "Over view",
+          url: "/dashboard",
         },
         {
           title: "Starred",
-          url: "#",
+          url: "/",
         },
         {
           title: "Settings",
