@@ -2,12 +2,10 @@
 
 import {
   AudioWaveform,
-  BookOpen,
-  Bot,
   Command,
   GalleryVerticalEnd,
   LayoutDashboard,
-  Settings2
+  SquareChartGantt
 } from "lucide-react"
 import * as React from "react"
 
@@ -69,70 +67,21 @@ const data = {
       ],
     },
     {
-      title: "Models",
+      title: "Projects",
       url: "#",
-      icon: Bot,
+      icon: SquareChartGantt,
       items: [
         {
-          title: "Genesis",
-          url: "#",
+          title: "Add Project",
+          url: "/dashboard/add-project",
         },
         {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
+          title: "Project List",
           url: "#",
         },
       ],
     },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
+    
   ],
 }
 
