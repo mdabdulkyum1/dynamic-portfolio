@@ -159,7 +159,7 @@ export function ProjectForm({ project, isEdit = false }: ProjectFormProps) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto bg-white shadow-md p-8 rounded-md">
+    <div className="bg-white shadow-md p-8 rounded-md">
       {successMessage && (
         <p className="text-green-600 mb-4 text-center">{successMessage}</p>
       )}
