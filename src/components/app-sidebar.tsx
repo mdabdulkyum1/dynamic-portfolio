@@ -73,7 +73,7 @@ const data = {
       items: [
         {
           title: "Add Project",
-          url: "/dashboard/add-project",
+          url: "/dashboard/projects",
         },
         {
           title: "Project List",

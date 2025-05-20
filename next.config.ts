@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     turbo: {}, // Enables the Turbo engine
+    serverActions: {
+      bodySizeLimit: '15mb', // increase from default 1mb, adjust as needed
+    },
   },
   webpack: (config) => {
     config.resolve.fallback = {
