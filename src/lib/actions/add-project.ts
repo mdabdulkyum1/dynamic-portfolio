@@ -1,8 +1,8 @@
 "use server";
 
 import { z, ZodError } from "zod"; // Import ZodError
-import connectDB from "../db";
 import Projects from "../../../models/Projects";
+import connectDB from "../db";
 
 const projectSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -44,11 +44,9 @@ export async function addProject(
       _id: formData.get("_id") ? (formData.get("_id") as string) : undefined,
     };
 
-    console.log("Raw Data:", rawData);
 
     // Validate
     const result = projectSchema.safeParse(rawData);
-    console.log("Validation Result:", result);
 
     if (!result.success) {
       const formattedErrors: Record<string, string> = {};
@@ -59,12 +57,10 @@ export async function addProject(
           formattedErrors[err.path[0] as string] = err.message;
         }
       });
-      console.log("Validation Errors:", formattedErrors);
       return { Error: formattedErrors };
     }
 
     const validData = result.data;
-    console.log("Valid Data:", validData);
 
     await connectDB();
 
@@ -75,6 +71,7 @@ export async function addProject(
         { $set: validData },
         { new: true, runValidators: true }
       );
+
       if (!updatedProject) {
         return { Error: { general: "Project not found" } };
       }

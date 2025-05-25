@@ -1,5 +1,5 @@
 import Button from "@/components/global/Buttons/Button";
-import Harun from "./components/Harun";
+import Projects from "./components/Projects/Projects";
 
 
 export default function Home() {
@@ -8,7 +8,9 @@ export default function Home() {
     <div className="my-20 flex h-screen items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 text-white">
        <Button text={"Download Resume"}></Button>
     </div>
-    <Harun></Harun>
+    <div className="">
+        <Projects></Projects>
+    </div>
     </>
   );
 }

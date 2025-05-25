@@ -72,12 +72,8 @@ const data = {
       icon: SquareChartGantt,
       items: [
         {
-          title: "Add Project",
+          title: "Projects",
           url: "/dashboard/projects",
-        },
-        {
-          title: "Project List",
-          url: "#",
         },
       ],
     },

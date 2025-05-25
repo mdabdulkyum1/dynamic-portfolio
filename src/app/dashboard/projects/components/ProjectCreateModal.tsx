@@ -7,9 +7,25 @@ import { ProjectForm } from "./ProjectForm";
 type ProjectCreateModalProps = {
   isOpen: boolean;
   closeModal: () => void;
+    project?: {
+        _id: string;
+        title: string;
+        link: string;
+        image: string;
+        images: string[];
+        category: string;
+        description: string;
+        techUsed: string;
+        gitClient: string;
+        gitServer: string;
+        createdAt: string;
+        updatedAt: string;
+        __v: number;
+    };
+    isEdit?: boolean;
 };
 
-const ProjectCreateModal = ({ isOpen, closeModal, }:ProjectCreateModalProps ) => {
+const ProjectCreateModal = ({ isOpen, closeModal, project, isEdit }:ProjectCreateModalProps ) => {
    
     return (
         <Transition appear show={isOpen} as={Fragment}>
@@ -42,7 +58,7 @@ const ProjectCreateModal = ({ isOpen, closeModal, }:ProjectCreateModalProps ) =>
                                     Add New Project
                                 </Dialog.Title>
 
-                                <ProjectForm></ProjectForm>
+                                <ProjectForm project={project} isEdit={isEdit}></ProjectForm>
 
                             </Dialog.Panel>
                         </Transition.Child>
