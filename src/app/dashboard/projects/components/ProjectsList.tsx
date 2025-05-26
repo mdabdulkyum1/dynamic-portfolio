@@ -32,6 +32,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useTransition } from "react";
 import ProjectCreateModal from "./ProjectCreateModal";
+import { deleteProject } from "@/lib/actions/delete-project";
 
 interface Project {
   _id: string;
@@ -77,21 +78,22 @@ const ProjectsList = ({ initialProjects }: { initialProjects: Project[] }) => {
   };
 
 
-  // Handle delete (API call)
   const handleDelete = async (projectId: string) => {
-    try {
-      const response = await fetch(`/api/projects/${projectId}`, {
-        method: "DELETE",
-      });
-      if (response.ok) {
-        setProjects(projects.filter((project) => project._id !== projectId));
-      } else {
-        console.error("Failed to delete project");
-      }
-    } catch (error) {
-      console.error("Error deleting project:", error);
+  try {
+    const deleteRes = await deleteProject(projectId);
+
+    if (deleteRes?.status) {
+      setProjects((prevProjects) =>
+        prevProjects.filter((project) => project._id !== projectId)
+      );
+    } else {
+      console.error("Failed to delete project:", deleteRes?.message || "Unknown error");
     }
-  };
+  } catch (error) {
+    console.error("Error deleting project:", error);
+  }
+};
+
 
   return (
     <div className="container mx-auto p-6 max-w-7xl">
@@ -186,7 +188,7 @@ const ProjectsList = ({ initialProjects }: { initialProjects: Project[] }) => {
                                  closeModal={() => setIsModalOpen(false)} project={currentProject} isEdit={true}/>
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
-                          <Button variant="destructive" size="sm" disabled={isPending}>
+                          <Button className="cursor-pointer" variant="destructive" size="sm" disabled={isPending}>
                             Delete
                           </Button>
                         </AlertDialogTrigger>
@@ -200,7 +202,7 @@ const ProjectsList = ({ initialProjects }: { initialProjects: Project[] }) => {
                           </AlertDialogHeader>
                           <AlertDialogFooter>
                             <AlertDialogCancel>Cancel</AlertDialogCancel>
-                            <AlertDialogAction onClick={() => handleDelete(project._id)}>
+                            <AlertDialogAction className="cursor-pointer" onClick={() => handleDelete(project._id)}>
                               Delete
                             </AlertDialogAction>
                           </AlertDialogFooter>
