@@ -53,7 +53,7 @@ export function NavbarDemo() {
   if(!pathName.includes("dashboard")){
     
       return (
-        <nav className={`fixed top-0 w-full transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-20"}`}>
+        <nav className={`fixed top-0 z-50 w-full transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-20"}`}>
                   <div className="relative w-full">
           <Navbar>
             {/* Desktop Navigation */}

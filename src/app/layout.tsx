@@ -32,11 +32,9 @@ export default function RootLayout({
       >
         <NextAuthProvider>
            <NavbarDemo></NavbarDemo>
-           <div className="container mx-auto px-4 md:px-0">
-             <div className="flex flex-col min-h-screen">
-               <main className="flex-grow">{children}</main>
-             </div>
-           </div>
+         
+               <main className="">{children}</main>
+            
            <Footer></Footer>
         </NextAuthProvider>
       </body>

@@ -52,7 +52,7 @@ const MyBanner = () => {
       {/* Left Section */}
       <div className="lg:w-1/2 text-center lg:text-left space-y-6 animate-fadeIn">
         <h2 className="text-4xl lg:text-6xl font-extrabold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent mb-4">
-          Hi, I{"'"}m MD Abdul Kyum
+          Hi, I{"'"}m Abdul Kyum
         </h2>
         <h3 className="text-2xl lg:text-4xl font-semibold text-gray-800 dark:text-slate-200 min-h-[40px]">
           {typewriterText}
