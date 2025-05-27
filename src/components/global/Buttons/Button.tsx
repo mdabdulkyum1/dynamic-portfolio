@@ -1,15 +1,19 @@
+
 "use client";
 
 import styled from 'styled-components';
+import { forwardRef } from 'react';
 
 type ButtonProps = {
-    text: string;
-}
+  text: string;
+  className?: string; 
+};
 
-const Button = ({text}: ButtonProps) => {
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({ text, className }, ref) => {
   return (
-    <StyledWrapper>
-      <button className="button">
+    <StyledWrapper className={className}>
+      <button ref={ref} className="button">
         <div className="button-outer">
           <div className="button-inner">
             <span>{text}</span>
@@ -18,7 +22,10 @@ const Button = ({text}: ButtonProps) => {
       </button>
     </StyledWrapper>
   );
-}
+});
+
+// Ensure the component has a display name for debugging
+Button.displayName = 'Button';
 
 const StyledWrapper = styled.div`
   .button {
@@ -92,30 +99,28 @@ const StyledWrapper = styled.div`
     overflow: clip;
     clip-path: inset(0 0 0 0 round 100em);
     box-shadow:
-          /* 1 */
       0 0 0 0 inset rgba(5, 5, 5, 0.1),
-      /* 2 */ -0.05em -0.05em 0.05em 0 inset rgba(5, 5, 5, 0.25),
-      /* 3 */ 0 0 0 0 inset rgba(5, 5, 5, 0.1),
-      /* 4 */ 0 0 0.05em 0.2em inset rgba(255, 255, 255, 0.25),
-      /* 5 */ 0.025em 0.05em 0.1em 0 inset rgba(255, 255, 255, 1),
-      /* 6 */ 0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25),
-      /* 7 */ -0.075em -0.25em 0.25em 0.1em inset rgba(5, 5, 5, 0.25);
+      -0.05em -0.05em 0.05em 0 inset rgba(5, 5, 5, 0.25),
+      0 0 0 0 inset rgba(5, 5, 5, 0.1),
+      0 0 0.05em 0.2em inset rgba(255, 255, 255, 0.25),
+      0.025em 0.05em 0.1em 0 inset rgba(255, 255, 255, 1),
+      0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25),
+      -0.075em -0.25em 0.25em 0.1em inset rgba(5, 5, 5, 0.25);
   }
 
   .button:hover .button-inner {
     clip-path: inset(
       clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px)
-        clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) round 100em
+      clamp(1px, 0.0625em, 2px) clamp(1px, 0.0625em, 2px) round 100em
     );
     box-shadow:
-          /* 1 */
       0.1em 0.15em 0.05em 0 inset rgba(5, 5, 5, 0.75),
-      /* 2 */ -0.025em -0.03em 0.05em 0.025em inset rgba(5, 5, 5, 0.5),
-      /* 3 */ 0.25em 0.25em 0.2em 0 inset rgba(5, 5, 5, 0.5),
-      /* 4 */ 0 0 0.05em 0.5em inset rgba(255, 255, 255, 0.15),
-      /* 5 */ 0 0 0 0 inset rgba(255, 255, 255, 1),
-      /* 6 */ 0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25),
-      /* 7 */ -0.075em -0.12em 0.2em 0.1em inset rgba(5, 5, 5, 0.25);
+      -0.025em -0.03em 0.05em 0.025em inset rgba(5, 5, 5, 0.5),
+      0.25em 0.25em 0.2em 0 inset rgba(5, 5, 5, 0.5),
+      0 0 0.05em 0.5em inset rgba(255, 255, 255, 0.15),
+      0 0 0 0 inset rgba(255, 255, 255, 1),
+      0.12em 0.12em 0.12em inset rgba(255, 255, 255, 0.25),
+      -0.075em -0.12em 0.2em 0.1em inset rgba(5, 5, 5, 0.25);
   }
 
   .button .button-inner span {
@@ -148,6 +153,8 @@ const StyledWrapper = styled.div`
 
   .button:active .button-inner {
     transform: scale(0.975);
-  }`;
+  }
+`;
 
 export default Button;
+
