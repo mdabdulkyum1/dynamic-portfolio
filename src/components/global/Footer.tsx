@@ -38,7 +38,7 @@ const Footer = () => {
               <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-light-accent to-dark-accent dark:from-dark-accent dark:to-light-accent">
                 Md Abdul Kyum
               </h2>
-              <p className="text-steel-gray">Jr. Frontend Developer</p>
+              <p className="text-steel-gray">Full Stack Developer</p>
             </div>
   
             {/* Navigation Links */}
