@@ -17,10 +17,13 @@ import { Github, Linkedin, Twitter, Facebook } from "lucide-react";
 import { useState } from "react";
 import useTypewriter from "react-typewriter-hook";
 import "./MyBanner.css";
+import Image from "next/image";
+
+
 
 const MyBanner = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const typewriterText = useTypewriter("MERN Stack Developer | Backend Developer | Problem Solver");
+  const typewriterText = useTypewriter("Full Stack Developer | Backend Developer | Problem Solver");
 
   // Download function using the working SweetAlert2 approach
   const handleDownload = () => {
@@ -58,7 +61,7 @@ const MyBanner = () => {
           {typewriterText}
         </h3>
         <p className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto lg:mx-0 text-lg">
-          Passionate MERN Stack Developer dedicated to crafting seamless, user-friendly digital experiences. Explore my projects and connect with me!
+          Passionate Full Stack Developer dedicated to crafting seamless, user-friendly digital experiences. Explore my projects and connect with me!
         </p>
         <p className="text-gray-500 dark:text-gray-400 max-w-xl mx-auto lg:mx-0">
           <span className="font-medium">Email:</span> kyummdabdul@gmail.com | <span className="font-medium">Phone:</span> +8801754-462-008
@@ -142,9 +145,11 @@ const MyBanner = () => {
         <div className="relative">
           <div className="w-64 h-64 lg:w-96 lg:h-96 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
             {/* Placeholder for profile image */}
-            <img
-              src="/path/to/your-profile-image.jpg"
+            <Image
+              src="/banner.png"
               alt="Profile"
+              width={200}
+              height={200}
               className="w-full h-full object-cover opacity-90"
             />
           </div>
