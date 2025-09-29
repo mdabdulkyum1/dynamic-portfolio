@@ -39,8 +39,16 @@ const Projects = () => {
   const categories = ["All", ...new Set(projects.map((p) => p.category))];
 
   return (
-    <section className="container mx-auto px-4 py-10">
-      <h2 className="text-3xl font-bold mb-6">Latest Projects</h2>
+    <section className="py-16 bg-white dark:bg-gray-900">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+            Featured Projects
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-lg">
+            Showcasing my recent work and development projects
+          </p>
+        </div>
 
       {/* Filter */}
       <div className="mb-6 w-full max-w-xs">
@@ -80,6 +88,7 @@ const Projects = () => {
           ))}
         </div>
       )}
+      </div>
     </section>
   );
 };

@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+MD ABDUL KYUM
+Full-stack Developer
+kyummdabdul@gmail.com  ||  +8801754-462-008
+LinkedIn || Portfolio || GitHub
 
-First, run the development server:
+Skills
+Languages: JavaScript (ES6), TypeScript.
+Libraries & Frameworks: React.js, Next.js, Tailwind CSS, Redux, Node.js, Express.js, Nest.js.
+Technologies: React.js, Next.js, PostgreSQL, MongoDB, Prisma, JWT, Websocket.io,
+Tools & Platforms: Git, GitHub, VS Code, Vercel, Netlify, Postman, Docker.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Experience
+Back End Developer – SM Technology
+ 📍 Bangladesh · On-site | Full-time
+ Jun 2025 – Aug 2025 (3 months)
+Designed and optimized back-end operations, ensuring scalability, security, and high performance.
+Implemented real-time features, including push notifications and WebSocket-based communication.
+Integrated AI solutions and secure payment systems.
+Projects:
+Xynexa–Team Collaboration: xynexa | Client: xynexa-client  | Server: xynexa-server (Team-Project)
+Key Features:
+Task and project management for any team with a dashboard to track progress and team updates.
+Integrated chat and video conferencing system (like Google Meet).
+Built real-time chat and video meetings (like Google Meet); resolved deployment issues and teammate code conflicts.
+Technologies Used: Next.js, Redux, Tailwind CSS, Clerk, Prisma, Node.js, Nest.js, websockets.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Education Management: Live: EduProSphere || GitHub:  EduProSphere  || Server: EduProSphere
+Features:
+Seamless Class Management: Manage schedules, track attendance, and share resources.
+Enhanced Student Experience: Offering for accessing courses and assignments. 
+Secure Payment Integration: Powered by Stripe for secure and reliable transactions.
+Technologies Used: React.js, Tailwind CSS, React Router, Firebase, MongoDB, Node.js, Express.js, JWT.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Education:
+Bachelor of Science ( BSc ) – 2022 ( Degree pass course )
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Languages:
+English –( Proficient in reading and understanding. )
+Bengali – Native
