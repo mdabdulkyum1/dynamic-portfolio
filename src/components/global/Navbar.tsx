@@ -25,16 +25,8 @@ export function NavbarDemo() {
       link: "/",
     },
     {
-      name: "About",
-      link: "/about",
-    },
-    {
       name: "Services",
       link: "/services",
-    },
-    {
-      name: "Skills",
-      link: "/skills",
     },
     {
       name: "Projects",
