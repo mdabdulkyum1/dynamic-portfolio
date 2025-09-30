@@ -17,6 +17,23 @@ const projectSchema = z.object({
   techUsed: z.string().optional(),
   gitClient: z.string().url("Invalid GitHub Client URL").optional().or(z.literal("")),
   gitServer: z.string().url("Invalid GitHub Server URL").optional().or(z.literal("")),
+  status: z.enum(['draft', 'published', 'archived']).default('draft'),
+  featured: z.boolean().default(false),
+  liveDemo: z.string().url("Invalid Live Demo URL").optional().or(z.literal("")),
+  documentation: z.string().url("Invalid Documentation URL").optional().or(z.literal("")),
+  features: z
+    .string()
+    .optional()
+    .transform((val) => (val ? val.split(",").map((feature) => feature.trim()) : [])),
+  challenges: z.string().optional(),
+  learnings: z.string().optional(),
+  duration: z.string().optional(),
+  teamSize: z.number().min(1).max(100).optional().or(z.string().transform(val => parseInt(val) || 1)),
+  priority: z.number().min(0).max(10).optional().or(z.string().transform(val => parseInt(val) || 0)),
+  tags: z
+    .string()
+    .optional()
+    .transform((val) => (val ? val.split(",").map((tag) => tag.trim()) : [])),
   _id: z.string().optional(),
 });
 
@@ -41,6 +58,17 @@ export async function addProject(
       techUsed: (formData.get("techUsed") as string) || "",
       gitClient: (formData.get("gitClient") as string) || "",
       gitServer: (formData.get("gitServer") as string) || "",
+      status: (formData.get("status") as 'draft' | 'published' | 'archived') || 'draft',
+      featured: formData.get("featured") === 'true',
+      liveDemo: (formData.get("liveDemo") as string) || "",
+      documentation: (formData.get("documentation") as string) || "",
+      features: formData.get("features") as string,
+      challenges: (formData.get("challenges") as string) || "",
+      learnings: (formData.get("learnings") as string) || "",
+      duration: (formData.get("duration") as string) || "",
+      teamSize: formData.get("teamSize") ? parseInt(formData.get("teamSize") as string) : 1,
+      priority: formData.get("priority") ? parseInt(formData.get("priority") as string) : 0,
+      tags: formData.get("tags") as string,
       _id: formData.get("_id") ? (formData.get("_id") as string) : undefined,
     };
 

@@ -10,6 +10,22 @@ export interface IProject extends Document<Types.ObjectId> {
   techUsed?: string;
   gitClient?: string;
   gitServer?: string;
+  status: 'draft' | 'published' | 'archived';
+  featured: boolean;
+  liveDemo?: string;
+  documentation?: string;
+  features?: string[];
+  challenges?: string;
+  learnings?: string;
+  duration?: string;
+  teamSize?: number;
+  analytics: {
+    views: number;
+    clicks: number;
+    lastViewed?: Date;
+  };
+  priority: number;
+  tags: string[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -25,6 +41,26 @@ const projectSchema: Schema<IProject> = new Schema<IProject>(
     techUsed: { type: String, trim: true, default: "" },
     gitClient: { type: String, trim: true, default: "" },
     gitServer: { type: String, trim: true, default: "" },
+    status: { 
+      type: String, 
+      enum: ['draft', 'published', 'archived'], 
+      default: 'draft' 
+    },
+    featured: { type: Boolean, default: false },
+    liveDemo: { type: String, trim: true, default: "" },
+    documentation: { type: String, trim: true, default: "" },
+    features: { type: [String], default: [] },
+    challenges: { type: String, trim: true, default: "" },
+    learnings: { type: String, trim: true, default: "" },
+    duration: { type: String, trim: true, default: "" },
+    teamSize: { type: Number, default: 1 },
+    analytics: {
+      views: { type: Number, default: 0 },
+      clicks: { type: Number, default: 0 },
+      lastViewed: { type: Date }
+    },
+    priority: { type: Number, default: 0 },
+    tags: { type: [String], default: [] },
   },
   {
     timestamps: true,

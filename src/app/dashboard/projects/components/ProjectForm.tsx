@@ -16,6 +16,17 @@ interface Project {
   gitClient?: string;
   gitServer?: string;
   images?: string[];
+  status?: 'draft' | 'published' | 'archived';
+  featured?: boolean;
+  liveDemo?: string;
+  documentation?: string;
+  features?: string[];
+  challenges?: string;
+  learnings?: string;
+  duration?: string;
+  teamSize?: number;
+  priority?: number;
+  tags?: string[];
 }
 
 interface ProjectFormProps {
@@ -282,6 +293,186 @@ export function ProjectForm({ project, isEdit = false }: ProjectFormProps) {
             className="w-full border border-gray-300 rounded px-4 py-2"
           />
           <p className="text-red-500 text-sm">{state?.Error?.techUsed}</p>
+        </div>
+
+        {/* Status */}
+        <div className="flex flex-col">
+          <label htmlFor="status" className="block text-sm font-semibold mb-1">
+            Status
+          </label>
+          <select
+            name="status"
+            id="status"
+            defaultValue={project?.status || "draft"}
+            className="w-full border border-gray-300 rounded px-4 py-2"
+          >
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+            <option value="archived">Archived</option>
+          </select>
+          <p className="text-red-500 text-sm">{state?.Error?.status}</p>
+        </div>
+
+        {/* Live Demo */}
+        <div className="flex flex-col">
+          <label htmlFor="liveDemo" className="block text-sm font-semibold mb-1">
+            Live Demo URL
+          </label>
+          <input
+            type="url"
+            name="liveDemo"
+            id="liveDemo"
+            placeholder="https://yourdemo.com"
+            defaultValue={project?.liveDemo || ""}
+            className="w-full border border-gray-300 rounded px-4 py-2"
+          />
+          <p className="text-red-500 text-sm">{state?.Error?.liveDemo}</p>
+        </div>
+
+        {/* Documentation */}
+        <div className="flex flex-col">
+          <label htmlFor="documentation" className="block text-sm font-semibold mb-1">
+            Documentation URL
+          </label>
+          <input
+            type="url"
+            name="documentation"
+            id="documentation"
+            placeholder="https://yourdocs.com"
+            defaultValue={project?.documentation || ""}
+            className="w-full border border-gray-300 rounded px-4 py-2"
+          />
+          <p className="text-red-500 text-sm">{state?.Error?.documentation}</p>
+        </div>
+
+        {/* Duration */}
+        <div className="flex flex-col">
+          <label htmlFor="duration" className="block text-sm font-semibold mb-1">
+            Project Duration
+          </label>
+          <input
+            type="text"
+            name="duration"
+            id="duration"
+            placeholder="e.g. 3 months, 2 weeks"
+            defaultValue={project?.duration || ""}
+            className="w-full border border-gray-300 rounded px-4 py-2"
+          />
+          <p className="text-red-500 text-sm">{state?.Error?.duration}</p>
+        </div>
+
+        {/* Team Size */}
+        <div className="flex flex-col">
+          <label htmlFor="teamSize" className="block text-sm font-semibold mb-1">
+            Team Size
+          </label>
+          <input
+            type="number"
+            name="teamSize"
+            id="teamSize"
+            min="1"
+            max="100"
+            placeholder="1"
+            defaultValue={project?.teamSize || 1}
+            className="w-full border border-gray-300 rounded px-4 py-2"
+          />
+          <p className="text-red-500 text-sm">{state?.Error?.teamSize}</p>
+        </div>
+
+        {/* Priority */}
+        <div className="flex flex-col">
+          <label htmlFor="priority" className="block text-sm font-semibold mb-1">
+            Priority (0-10)
+          </label>
+          <input
+            type="number"
+            name="priority"
+            id="priority"
+            min="0"
+            max="10"
+            placeholder="0"
+            defaultValue={project?.priority || 0}
+            className="w-full border border-gray-300 rounded px-4 py-2"
+          />
+          <p className="text-red-500 text-sm">{state?.Error?.priority}</p>
+        </div>
+
+        {/* Featured Toggle */}
+        <div className="flex flex-col md:col-span-2">
+          <label className="flex items-center space-x-2 cursor-pointer">
+            <input
+              type="checkbox"
+              name="featured"
+              defaultChecked={project?.featured || false}
+              className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <span className="text-sm font-semibold">Featured Project</span>
+          </label>
+          <p className="text-xs text-gray-500 mt-1">Featured projects will be highlighted on your portfolio</p>
+        </div>
+
+        {/* Features */}
+        <div className="flex flex-col md:col-span-2">
+          <label htmlFor="features" className="block text-sm font-semibold mb-1">
+            Key Features (comma-separated)
+          </label>
+          <input
+            type="text"
+            name="features"
+            id="features"
+            placeholder="e.g. User Authentication, Real-time Chat, Payment Integration"
+            defaultValue={project?.features?.join(", ") || ""}
+            className="w-full border border-gray-300 rounded px-4 py-2"
+          />
+          <p className="text-red-500 text-sm">{state?.Error?.features}</p>
+        </div>
+
+        {/* Tags */}
+        <div className="flex flex-col md:col-span-2">
+          <label htmlFor="tags" className="block text-sm font-semibold mb-1">
+            Tags (comma-separated)
+          </label>
+          <input
+            type="text"
+            name="tags"
+            id="tags"
+            placeholder="e.g. react, typescript, tailwind, api"
+            defaultValue={project?.tags?.join(", ") || ""}
+            className="w-full border border-gray-300 rounded px-4 py-2"
+          />
+          <p className="text-red-500 text-sm">{state?.Error?.tags}</p>
+        </div>
+
+        {/* Challenges */}
+        <div className="flex flex-col md:col-span-2">
+          <label htmlFor="challenges" className="block text-sm font-semibold mb-1">
+            Challenges Faced
+          </label>
+          <textarea
+            name="challenges"
+            id="challenges"
+            rows={3}
+            placeholder="Describe any technical challenges you faced during development..."
+            defaultValue={project?.challenges || ""}
+            className="w-full border border-gray-300 rounded px-4 py-2 resize-none"
+          />
+          <p className="text-red-500 text-sm">{state?.Error?.challenges}</p>
+        </div>
+
+        {/* Learnings */}
+        <div className="flex flex-col md:col-span-2">
+          <label htmlFor="learnings" className="block text-sm font-semibold mb-1">
+            Key Learnings
+          </label>
+          <textarea
+            name="learnings"
+            id="learnings"
+            rows={3}
+            placeholder="What did you learn from this project?..."
+            defaultValue={project?.learnings || ""}
+            className="w-full border border-gray-300 rounded px-4 py-2 resize-none"
+          />
+          <p className="text-red-500 text-sm">{state?.Error?.learnings}</p>
         </div>
 
         {/* Main Image Upload */}

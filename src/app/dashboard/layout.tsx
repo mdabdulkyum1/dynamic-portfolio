@@ -1,4 +1,5 @@
 import { AppSidebar } from "@/components/app-sidebar"
+import { Toaster } from "sonner";
 
 import {
   Breadcrumb,
@@ -20,7 +21,7 @@ import {
 
 const dashboardLayout = ({ children, }: Readonly<{ children: React.ReactNode }>) => {
     return (
-
+        <>
         <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
@@ -35,12 +36,12 @@ const dashboardLayout = ({ children, }: Readonly<{ children: React.ReactNode }>)
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
                   <BreadcrumbLink href="#">
-                    Building Your Application
+                    Portfolio Dashboard
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                  <BreadcrumbPage>Projects Management</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -57,7 +58,8 @@ const dashboardLayout = ({ children, }: Readonly<{ children: React.ReactNode }>)
         </div>
       </SidebarInset>
     </SidebarProvider>
-        
+    <Toaster position="top-right" expand={true} richColors />
+        </>
     )
 }
 export default dashboardLayout;
