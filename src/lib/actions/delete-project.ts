@@ -2,6 +2,7 @@
 
 import Projects from "../../../models/Projects";
 import connectDB from "../db";
+import { revalidatePath } from "next/cache";
 
 export const deleteProject = async (id?: string) => {
   try {
@@ -23,6 +24,9 @@ export const deleteProject = async (id?: string) => {
       };
     }
 
+    // Revalidate the projects page to clear cache
+    revalidatePath('/dashboard/projects');
+    
     return {
       status: true,
       data: deletedProject,

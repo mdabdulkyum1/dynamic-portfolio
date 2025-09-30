@@ -3,8 +3,10 @@
 
 import Projects from "../../../models/Projects";
 import connectDB from "../db";
+import { unstable_noStore as noStore } from "next/cache";
 
 export const getProjects = async (category?: string) => {
+  noStore(); // Disable caching for this function
   try {
     await connectDB();
     const query = category ? { category } : {};
