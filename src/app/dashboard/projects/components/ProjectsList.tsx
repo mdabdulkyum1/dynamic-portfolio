@@ -143,7 +143,7 @@ const ProjectsList = ({ initialProjects }: { initialProjects: Project[] }) => {
               <TableHead>Tech Used</TableHead>
               <TableHead>Image</TableHead>
               <TableHead>Links</TableHead>
-              <TableHead className="w-[150px]">Actions</TableHead>
+              <TableHead className="w-[200px]">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -151,13 +151,21 @@ const ProjectsList = ({ initialProjects }: { initialProjects: Project[] }) => {
               projects.map((project) => (
                 <TableRow key={project._id}>
                   <TableCell>
-                    <Link
-                      href={project.link}
-                      target="_blank"
-                      className="text-blue-600 hover:underline"
-                    >
-                      {project.title}
-                    </Link>
+                    <div className="space-y-1">
+                      <Link
+                        href={`/dashboard/projects/${project._id}`}
+                        className="text-blue-600 hover:underline font-medium block"
+                      >
+                        {project.title}
+                      </Link>
+                      <Link
+                        href={project.link}
+                        target="_blank"
+                        className="text-xs text-gray-500 hover:underline block"
+                      >
+                        View Live →
+                      </Link>
+                    </div>
                   </TableCell>
                   <TableCell>{project.category}</TableCell>
                   <TableCell className="max-w-xs truncate">{project.description}</TableCell>
@@ -190,7 +198,17 @@ const ProjectsList = ({ initialProjects }: { initialProjects: Project[] }) => {
                     </div>
                   </TableCell>
                   <TableCell>
-                    <div className="flex gap-2">
+                    <div className="flex gap-1 flex-wrap">
+                      <Link href={`/dashboard/projects/${project._id}`}>
+                        <Button
+                          className="cursor-pointer"
+                          variant="secondary"
+                          size="sm"
+                          disabled={isPending}
+                        >
+                          View
+                        </Button>
+                      </Link>
                       <Button
                         className="cursor-pointer"
                         variant="outline"
@@ -198,7 +216,7 @@ const ProjectsList = ({ initialProjects }: { initialProjects: Project[] }) => {
                        onClick={() => { setIsModalOpen(true); setCurrentProject(project); }}
                         disabled={isPending}
                       >
-                        Update
+                        Edit
                       </Button>
                        <ProjectCreateModal isOpen={isModalOpen}
                                  closeModal={() => setIsModalOpen(false)} project={currentProject} isEdit={true}/>

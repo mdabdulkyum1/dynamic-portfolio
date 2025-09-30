@@ -24,8 +24,9 @@ export const deleteProject = async (id?: string) => {
       };
     }
 
-    // Revalidate the projects page to clear cache
+    // Revalidate pages to clear cache
     revalidatePath('/dashboard/projects');
+    revalidatePath('/'); // Home page
     
     return {
       status: true,

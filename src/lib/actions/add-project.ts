@@ -3,6 +3,7 @@
 import { z, ZodError } from "zod"; // Import ZodError
 import Projects from "../../../models/Projects";
 import connectDB from "../db";
+import { revalidatePath } from "next/cache";
 
 const projectSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -108,6 +109,10 @@ export async function addProject(
       await Projects.create(validData);
     }
 
+    // Revalidate pages to clear cache
+    revalidatePath('/dashboard/projects');
+    revalidatePath('/'); // Home page
+    
     return { success: true };
   } catch (error) {
     console.error("Error in addProject:", error);

@@ -2,6 +2,7 @@
 
 import Projects from "../../../models/Projects";
 import connectDB from "../db";
+import { revalidatePath } from "next/cache";
 
 export interface BulkActionResult {
   success: boolean;
@@ -24,6 +25,10 @@ export async function bulkDeleteProjects(projectIds: string[]): Promise<BulkActi
     const result = await Projects.deleteMany({
       _id: { $in: projectIds }
     });
+
+    // Revalidate pages to clear cache
+    revalidatePath('/dashboard/projects');
+    revalidatePath('/'); // Home page
 
     return {
       success: true,
@@ -59,6 +64,10 @@ export async function bulkUpdateProjectStatus(
       { $set: { status } }
     );
 
+    // Revalidate pages to clear cache
+    revalidatePath('/dashboard/projects');
+    revalidatePath('/'); // Home page
+
     return {
       success: true,
       message: `Successfully updated ${result.modifiedCount} project(s) to ${status}`,
@@ -92,6 +101,10 @@ export async function bulkToggleFeatured(
       { _id: { $in: projectIds } },
       { $set: { featured } }
     );
+
+    // Revalidate pages to clear cache
+    revalidatePath('/dashboard/projects');
+    revalidatePath('/'); // Home page
 
     return {
       success: true,
