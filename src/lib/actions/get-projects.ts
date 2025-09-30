@@ -9,7 +9,7 @@ export const getProjects = async (category?: string, status?: string) => {
   noStore(); // Disable caching for this function
   try {
     await connectDB();
-    const query: any = {};
+    const query: { category?: string; status?: string } = {};
     
     if (category) {
       query.category = category;
