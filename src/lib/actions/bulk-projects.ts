@@ -115,11 +115,11 @@ export async function exportProjects(
     category?: string;
     featured?: boolean;
   }
-): Promise<{ success: boolean; data?: any; message: string }> {
+): Promise<{ success: boolean; data?: string | object; message: string }> {
   try {
     await connectDB();
     
-    let query: any = {};
+    const query: Record<string, unknown> = {};
     if (filters?.status) query.status = filters.status;
     if (filters?.category) query.category = filters.category;
     if (filters?.featured !== undefined) query.featured = filters.featured;

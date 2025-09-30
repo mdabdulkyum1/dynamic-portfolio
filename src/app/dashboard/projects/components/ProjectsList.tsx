@@ -12,10 +12,6 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { showToast } from "@/lib/toast";
 import {
   Select,
   SelectContent,
@@ -32,21 +28,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { getProjects } from "@/lib/actions/get-projects";
-import { bulkDeleteProjects, bulkUpdateProjectStatus, bulkToggleFeatured, exportProjects } from "@/lib/actions/bulk-projects";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useTransition, useMemo } from "react";
+import { useState, useTransition } from "react";
 import ProjectCreateModal from "./ProjectCreateModal";
 import { deleteProject } from "@/lib/actions/delete-project";
-import { Search, Download, Star, Eye, MousePointer, Trash2, Edit, MoreHorizontal } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 interface Project {
   _id: string;

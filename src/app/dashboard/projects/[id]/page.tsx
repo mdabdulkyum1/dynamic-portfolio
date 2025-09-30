@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { 
   ArrowLeft, 
   ExternalLink, 
@@ -22,21 +21,53 @@ import {
 import { getProjectById } from "@/lib/actions/get-project-by-id";
 import { trackProjectView } from "@/lib/actions/analytics";
 
-interface ProjectDetailsProps {
-  params: {
-    id: string;
+interface ProjectData {
+  _id: string;
+  title: string;
+  link: string;
+  image: string;
+  images: string[];
+  category: string;
+  description: string;
+  techUsed: string;
+  gitClient: string;
+  gitServer: string;
+  status: 'draft' | 'published' | 'archived';
+  featured: boolean;
+  liveDemo?: string;
+  documentation?: string;
+  features?: string[];
+  challenges?: string;
+  learnings?: string;
+  duration?: string;
+  teamSize?: number;
+  analytics: {
+    views: number;
+    clicks: number;
+    lastViewed?: Date;
   };
+  priority: number;
+  tags: string[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface ProjectDetailsProps {
+  params: Promise<{
+    id: string;
+  }>;
 }
 
 export default async function ProjectDetails({ params }: ProjectDetailsProps) {
-  const project = await getProjectById(params.id);
+  const { id } = await params;
+  const project = await getProjectById(id) as ProjectData;
   
   if (!project) {
     notFound();
   }
 
   // Track project view
-  await trackProjectView(params.id);
+  await trackProjectView(id);
 
   const getStatusColor = (status: string) => {
     switch (status) {
@@ -147,7 +178,7 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
-                  {project.features.map((feature, index) => (
+                  {project.features.map((feature: string, index: number) => (
                     <li key={index} className="flex items-start gap-2">
                       <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
                       <span className="text-gray-600 dark:text-gray-300">{feature}</span>
@@ -200,7 +231,7 @@ export default async function ProjectDetails({ params }: ProjectDetailsProps) {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {project.images.map((image, index) => (
+                  {project.images.map((image: string, index: number) => (
                     <div key={index} className="relative aspect-video rounded-lg overflow-hidden">
                       <Image
                         src={image}
