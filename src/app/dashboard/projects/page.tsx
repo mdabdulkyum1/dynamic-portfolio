@@ -16,6 +16,15 @@ interface Project {
   createdAt: string;
   updatedAt: string;
   __v: number;
+  status: 'draft' | 'published' | 'archived';
+  featured: boolean;
+  analytics: {
+    views: number;
+    clicks: number;
+    lastViewed?: Date;
+  };
+  priority: number;
+  tags: string[];
 }
 
 const page = async() => {

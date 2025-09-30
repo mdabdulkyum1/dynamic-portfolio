@@ -99,12 +99,12 @@ export async function getProjectAnalytics(): Promise<{
     // Recent activity (based on last viewed)
     const recentActivity = projects
       .filter(project => project.analytics?.lastViewed)
-      .sort((a, b) => new Date(b.analytics.lastViewed).getTime() - new Date(a.analytics.lastViewed).getTime())
+      .sort((a, b) => new Date(b.analytics!.lastViewed!).getTime() - new Date(a.analytics!.lastViewed!).getTime())
       .slice(0, 10)
       .map(project => ({
         title: project.title,
         action: 'viewed',
-        date: new Date(project.analytics.lastViewed)
+        date: new Date(project.analytics!.lastViewed!)
       }));
     
     return {
