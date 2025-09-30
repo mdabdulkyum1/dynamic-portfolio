@@ -108,7 +108,7 @@ const Projects = () => {
                 <div className="flex items-center gap-2">
                   <Badge variant="outline" className="text-xs">{project.category}</Badge>
                   {project.status === 'published' && (
-                    <Badge className="text-xs bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                    <Badge className="text-xs bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 cursor-pointer">
                       Live
                     </Badge>
                   )}
@@ -132,7 +132,7 @@ const Projects = () => {
                 <div className="pt-2 flex gap-2">
                   <Link href={project.link} target="_blank" className="cursor-pointer">
                     <Button size="sm" className="text-sm cursor-pointer flex-1">
-                      <ExternalLink className="w-3 h-3 mr-1" />
+                      <ExternalLink className="w-3 h-3 mr-1 cursor-pointer" />
                       Live Preview
                     </Button>
                   </Link>

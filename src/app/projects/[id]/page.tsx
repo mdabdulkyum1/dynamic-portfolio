@@ -85,7 +85,7 @@ export default async function PublicProjectDetails({ params }: ProjectDetailsPro
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto p-6 max-w-6xl">
         {/* Header */}
-        <div className="mb-6">
+        <div className="mb-6 mt-11">
           <Link href="/">
             <Button variant="outline" size="sm" className="mb-4">
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -93,7 +93,7 @@ export default async function PublicProjectDetails({ params }: ProjectDetailsPro
             </Button>
           </Link>
           
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-3">
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
