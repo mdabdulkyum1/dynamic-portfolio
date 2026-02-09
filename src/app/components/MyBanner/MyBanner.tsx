@@ -148,9 +148,9 @@ const MyBanner = () => {
             <Image
               src="/banner.png"
               alt="Profile"
-              width={200}
-              height={200}
-              className="w-full h-full object-cover opacity-90"
+              width={413}
+              height={531}
+              className="opacity-90"
             />
           </div>
           <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-pink-500 to-yellow-500 rounded-full opacity-50 animate-pulse" />

@@ -1,40 +1,119 @@
+# MD Abdul Kyum – Portfolio Website 🚀
 
-MD ABDUL KYUM
-Full-stack Developer
-kyummdabdul@gmail.com  ||  +8801754-462-008
-LinkedIn || Portfolio || GitHub
+A modern, high-performance personal portfolio built with **Next.js 15**, **React 19**, and **Tailwind CSS**.  
+This portfolio showcases my skills, projects, experience, and provides a way to contact me professionally.
 
-Skills
-Languages: JavaScript (ES6), TypeScript.
-Libraries & Frameworks: React.js, Next.js, Tailwind CSS, Redux, Node.js, Express.js, Nest.js.
-Technologies: React.js, Next.js, PostgreSQL, MongoDB, Prisma, JWT, Websocket.io,
-Tools & Platforms: Git, GitHub, VS Code, Vercel, Netlify, Postman, Docker.
+---
 
-Experience
-Back End Developer – SM Technology
- 📍 Bangladesh · On-site | Full-time
- Jun 2025 – Aug 2025 (3 months)
-Designed and optimized back-end operations, ensuring scalability, security, and high performance.
-Implemented real-time features, including push notifications and WebSocket-based communication.
-Integrated AI solutions and secure payment systems.
-Projects:
-Xynexa–Team Collaboration: xynexa | Client: xynexa-client  | Server: xynexa-server (Team-Project)
-Key Features:
-Task and project management for any team with a dashboard to track progress and team updates.
-Integrated chat and video conferencing system (like Google Meet).
-Built real-time chat and video meetings (like Google Meet); resolved deployment issues and teammate code conflicts.
-Technologies Used: Next.js, Redux, Tailwind CSS, Clerk, Prisma, Node.js, Nest.js, websockets.
+## 🔗 Live Demo
+👉 https://mdabdulkyum.vercel.app
 
-Education Management: Live: EduProSphere || GitHub:  EduProSphere  || Server: EduProSphere
-Features:
-Seamless Class Management: Manage schedules, track attendance, and share resources.
-Enhanced Student Experience: Offering for accessing courses and assignments. 
-Secure Payment Integration: Powered by Stripe for secure and reliable transactions.
-Technologies Used: React.js, Tailwind CSS, React Router, Firebase, MongoDB, Node.js, Express.js, JWT.
+---
 
-Education:
-Bachelor of Science ( BSc ) – 2022 ( Degree pass course )
+## 📸 Preview
+![Portfolio Preview]()
 
-Languages:
-English –( Proficient in reading and understanding. )
-Bengali – Native
+---
+
+## 📖 About The Project
+This is my personal developer portfolio designed to be fast, scalable, and visually clean.  
+It includes project showcases, interactive UI components, animations, and a contact system backed by MongoDB.
+
+The project follows modern best practices using the **Next.js App Router**, reusable components, and optimized styling.
+
+---
+
+## ✨ Features
+- ⚡ Built with Next.js 15 (Turbopack enabled)
+- 🎨 Fully responsive & modern UI
+- 🌙 Dark / Light mode support
+- 🧩 Reusable UI components (Radix UI + Headless UI)
+- 🎬 Smooth animations using Motion
+- 📝 Forms with validation (React Hook Form + Zod)
+- 📊 Charts & data visualization (Recharts)
+- 🔐 Authentication support (NextAuth)
+- 🗄️ MongoDB & Mongoose integration
+- 📱 Mobile-first design
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- Styled Components
+- Radix UI
+- Headless UI
+- Lucide & Tabler Icons
+
+### Backend & Tools
+- MongoDB
+- Mongoose
+- NextAuth
+- Zod (Schema validation)
+- React Hook Form
+- Recharts
+- DnD Kit
+
+---
+
+## 📂 Project Structure
+src/
+├── app/
+├── components/
+├── lib/
+├── models/
+├── hooks/
+├── styles/
+├── utils/
+└── types/
+
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/mdabdulkyum1/portfolio.git
+2️⃣ Install dependencies
+npm install
+3️⃣ Run the development server
+npm run dev
+The app will run at:
+
+http://localhost:3000
+🧪 Scripts
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint
+⚙️ Environment Variables
+Create a .env.local file in the root and add:
+
+MONGODB_URI=your_mongodb_connection_string
+NEXTAUTH_SECRET=your_secret
+NEXTAUTH_URL=http://localhost:3000
+✏️ Customization
+Update personal data inside components
+
+Replace images in the public/ directory
+
+Modify theme colors in Tailwind config
+
+Add or remove sections easily using reusable components
+
+📬 Contact
+📧 Email: kyummdabdul@gmail.com
+
+🌐 Portfolio: https://mdabdulkyum.vercel.app
+
+💼 LinkedIn: https://linkedin.com/in/your-username
+
+🐙 GitHub: https://github.com/mdabdulkyum1
+
+📄 License
+This project is open-source and available under the MIT License.
