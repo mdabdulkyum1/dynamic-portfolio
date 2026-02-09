@@ -109,11 +109,5 @@ Add or remove sections easily using reusable components
 📬 Contact
 📧 Email: kyummdabdul@gmail.com
 
-🌐 Portfolio: https://mdabdulkyum.vercel.app
-
-💼 LinkedIn: https://linkedin.com/in/your-username
-
-🐙 GitHub: https://github.com/mdabdulkyum1
-
 📄 License
 This project is open-source and available under the MIT License.

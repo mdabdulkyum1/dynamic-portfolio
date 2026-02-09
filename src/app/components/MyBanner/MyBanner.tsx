@@ -142,19 +142,49 @@ const MyBanner = () => {
 
       {/* Right Section - Image */}
       <div className="lg:w-1/2 mt-10 lg:mt-0 flex justify-center">
-        <div className="relative">
-          <div className="w-64 h-64 lg:w-96 lg:h-96 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-            {/* Placeholder for profile image */}
-            <Image
-              src="/banner.png"
-              alt="Profile"
-              width={413}
-              height={531}
-              className="opacity-90"
-            />
-          </div>
-          <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-pink-500 to-yellow-500 rounded-full opacity-50 animate-pulse" />
-        </div>
+        
+           <div className="relative group perspective-1000">
+             <div className="
+                  relative w-80 sm:w-96 h-[360px] 
+                  rounded-3xl overflow-hidden
+                  bg-gradient-to-br 
+                  
+                  backdrop-blur-2xl
+                  transition-all duration-700
+                  shadow-[0_40px_120px_-20px_rgba(0,0,0,0.3)]
+                  group-hover:shadow-purple-900/40 group-hover:shadow-2xl
+                  group-hover:rotate-y-8 group-hover:rotate-x-4 group-hover:scale-[1.04]
+                  transform-gpu
+              ">
+              {/* Glass overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/15 pointer-events-none z-10" />
+
+             {/* Image – CHANGED HERE */}
+             <Image
+               src="/banner.png"
+               alt="Abdul Kyum – Full Stack Developer"
+               fill
+               className="
+                 object-contain object-bottom   
+                 scale-95                       
+                 opacity-95
+                 transition-all duration-700
+                 group-hover:opacity-100 group-hover:scale-[0.98]
+               "
+               priority
+             />
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-pink-500 to-blue-300 rounded-full opacity-50 animate-pulse" />
+              {/* Holographic shine */}
+              <div className="
+                absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent
+                -translate-x-full group-hover:translate-x-full
+                transition-transform duration-1000
+                opacity-0 group-hover:opacity-60
+                z-20 pointer-events-none
+              " />
+       </div>
+     </div>
+
       </div>
     </div>
   );
