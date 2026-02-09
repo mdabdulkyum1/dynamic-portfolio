@@ -11,7 +11,7 @@ This portfolio showcases my skills, projects, experience, and provides a way to 
 ---
 
 ## 📸 Preview
-![Portfolio Preview]()
+![Portfolio Preview]() 
 
 ---
 
